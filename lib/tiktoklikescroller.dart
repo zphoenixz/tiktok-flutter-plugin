@@ -9,6 +9,7 @@ class TikTokStyleFullPageScroller extends StatefulWidget {
     this.swipeThreshold = 0.20,
     this.swipeVelocityThreshold = 1000,
     this.animationDuration = const Duration(milliseconds: 300),
+    @required this.cardIndex,
   });
 
   final int contentSize;
@@ -16,6 +17,7 @@ class TikTokStyleFullPageScroller extends StatefulWidget {
   final double swipeThreshold;
   final double swipeVelocityThreshold;
   final Duration animationDuration;
+  final int cardIndex;
 
   @override
   _TikTokStyleFullPageScrollerState createState() =>
@@ -35,13 +37,13 @@ class _TikTokStyleFullPageScrollerState
 
   @override
   void initState() {
+    _cardIndex = widget.cardIndex;
     _cardOffset = 0;
     _dragStartPosition = 0;
     _animationController = AnimationController(
       vsync: this,
       duration: widget.animationDuration,
     );
-    _cardIndex = 0;
     _dragState = DragState.idle;
     super.initState();
   }
